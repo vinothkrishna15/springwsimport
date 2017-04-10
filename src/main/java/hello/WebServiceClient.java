@@ -24,7 +24,6 @@ public class WebServiceClient extends WebServiceGatewaySupport {
 				.marshalSendAndReceive("http://http://localhost:8090/index.html",
 						request,
 						new SoapActionCallback("http://localhost:8090/ws/GetEmployee"));
-
 		return response;
 	}
 

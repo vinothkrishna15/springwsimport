@@ -1,6 +1,3 @@
-/**
- * 
- */
 package hello;
 
 import hello.WebServiceClient;
