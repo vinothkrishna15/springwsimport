@@ -23,7 +23,7 @@ public class WebServiceClient extends WebServiceGatewaySupport {
 		GetEmployeeResponse response = (GetEmployeeResponse) getWebServiceTemplate()
 				.marshalSendAndReceive("http://http://localhost:8090/index.html",
 						request,
-						new SoapActionCallback("http://localhost:8090/GetEmployee"));
+						new SoapActionCallback("http://localhost:8090/ws/GetEmployee"));
 
 		return response;
 	}
