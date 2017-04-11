@@ -21,9 +21,10 @@ public class WebServiceClient extends WebServiceGatewaySupport {
 		log.info("Requesting details for " + name);
 
 		GetEmployeeResponse response = (GetEmployeeResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://http://localhost:8090/index.html",
+				.marshalSendAndReceive("http://10.144.135.147:8090/ws",
 						request,
-						new SoapActionCallback("http://localhost:8090/ws/GetEmployee"));
+						new SoapActionCallback("http://com.example/webservice/generatedwsdl/GetEmployeeRequest"));
+
 		return response;
 	}
 
