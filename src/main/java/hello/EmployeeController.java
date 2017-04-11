@@ -24,8 +24,8 @@ public class EmployeeController {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(ServiceConfig.class);
         ctx.refresh();
-	ServiceClient serviceClient = ctx.getBean(ServiceClient.class);
-		GetEmployeeResponse response = serviceClient.getEmployeeDetails("arun");
+	    ServiceClient serviceClient = ctx.getBean(ServiceClient.class);
+		GetEmployeeResponse response = serviceClient.getEmployeeDetails(name);
 		Employee emp = new Employee();
 		
 		emp.setName(response.getEmployee().getName());
