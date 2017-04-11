@@ -1,27 +1,31 @@
+/**
+ * 
+ */
 package hello;
 
-import hello.WebServiceClient;
 import hello.wsdl.Employee;
 import hello.wsdl.GetEmployeeResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author TCS
  *
  */
-@Controller
+@RestController
 public class EmployeeController {
 	
-	@Autowired
-	WebServiceClient webServicesClient;
 
 	@RequestMapping("/getEmployee")
     public Employee empDetails(@RequestParam(value="name", defaultValue="") String name) {
-		GetEmployeeResponse response = webServicesClient.getDetails(name);
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+        ctx.register(ServiceConfig.class);
+        ctx.refresh();
+	ServiceClient serviceClient = ctx.getBean(ServiceClient.class);
+		GetEmployeeResponse response = serviceClient.getEmployeeDetails("arun");
 		Employee emp = new Employee();
 		
 		emp.setName(response.getEmployee().getName());
@@ -29,8 +33,5 @@ public class EmployeeController {
 		emp.setDesignation(response.getEmployee().getDesignation());
 		emp.setRole(response.getEmployee().getRole());
         return emp;
-        
-        
-		
-    }
+	}
 }
