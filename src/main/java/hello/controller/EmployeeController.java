@@ -1,8 +1,10 @@
 /**
  * 
  */
-package hello;
+package hello.controller;
 
+import hello.ServiceClient;
+import hello.ServiceConfig;
 import hello.wsdl.Employee;
 import hello.wsdl.GetEmployeeResponse;
 
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class EmployeeController {
 	
 
+	@SuppressWarnings("resource")
 	@RequestMapping("/getEmployee")
     public Employee empDetails(@RequestParam(value="name", defaultValue="") String name) {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
