@@ -8,6 +8,7 @@ import hello.ServiceConfig;
 import hello.wsdl.Employee;
 import hello.wsdl.GetEmployeeResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EmployeeController {
 	
-
+	
 	@SuppressWarnings("resource")
 	@RequestMapping("/getEmployee")
     public Employee empDetails(@RequestParam(value="name", defaultValue="") String name) {
